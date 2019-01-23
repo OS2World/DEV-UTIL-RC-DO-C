@@ -1,0 +1,23 @@
+#include <os2.h>
+#include "rccdo.h"
+MENU Rccdo PRELOAD
+    {
+  SUBMENU "~File", File_AB, MIS_SUBMENU | MIS_TEXT  , 0
+     {
+   MENUITEM "~Open", Open_CH, MIS_TEXT
+   MENUITEM "~Print", Print_CH, MIS_TEXT
+   MENUITEM "", ID_Separator2, MIS_SEPARATOR 
+   MENUITEM "E~xit", Exit_CH, MIS_TEXT 
+    }
+    SUBMENU "~Help", Help_AB, MIS_SUBMENU | MIS_TEXT  , 0
+     {
+   MENUITEM "~Help for help...", HelpForHelp, MIS_TEXT 
+   MENUITEM "~Extended help...", ExtendedHelp, MIS_TEXT 
+   MENUITEM "~Keys help...", KeysHelp, MIS_TEXT 
+   MENUITEM "Help ~index...", HelpIndex, MIS_TEXT 
+    }
+   }
+POINTER Rccdo "rccdo.ico"
+rcinclude rccdo.dlg
+
+

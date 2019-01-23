@@ -1,0 +1,35 @@
+DLGINCLUDE 1 "RCCDO.H"
+
+DLGTEMPLATE Open_CH LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Dialog Title", Open_CH, 19, 11, 251, 173, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        CHECKBOX        "Check", check, 7, 149, 40, 10
+        COMBOBOX        "", combolistbox, 92, 127, 48, 35, WS_GROUP
+        ENTRYFIELD      "", entryfield, 176, 154, 32, 8, ES_MARGIN
+        GROUPBOX        "MLE", group, 25, 52, 61, 59
+        CONTROL         "", horizontal, 73, 27, 48, 7, WC_SCROLLBAR, 
+                        SBS_HORZ | WS_VISIBLE
+        LISTBOX         listbox, 170, 97, 48, 40
+        MLE             "", mle, 35, 61, 48, 40, MLS_WORDWRAP | MLS_HSCROLL | 
+                        MLS_VSCROLL | WS_GROUP
+        PUSHBUTTON      "Exit", push, 97, 82, 40, 14
+        CONTROL         "", 116, 67, 36, 64, 16, WC_SLIDER, SLS_HORIZONTAL | 
+                        SLS_CENTER | SLS_SNAPTOINCREMENT | SLS_HOMELEFT | 
+                        SLS_PRIMARYSCALE1 | WS_GROUP | WS_TABSTOP | 
+                        WS_VISIBLE
+                        CTLDATA 12, 0, 10, 0, 100, 0
+        LTEXT           "Text", text, 84, 110, 20, 8
+        CONTROL         "", vertical, 140, 21, 9, 40, WC_SCROLLBAR, SBS_VERT | 
+                        WS_VISIBLE
+        RADIOBUTTON     "Radio2", radio_2, 174, 75, 49, 10, WS_TABSTOP
+        CHECKBOX        "Check2", checker2, 7, 139, 45, 10
+        GROUPBOX        "List Box", 165, 163, 92, 77, 56
+        GROUPBOX        "Combo List Box", 167, 71, 125, 83, 46
+        GROUPBOX        "Entry Field", 168, 167, 149, 78, 24
+        AUTOCHECKBOX    "AutoCheck", Acheck, 7, 129, 60, 10
+        AUTORADIOBUTTON "Auto Radio", AutoRadio, 174, 65, 77, 10, WS_TABSTOP
+        RADIOBUTTON     "Radio", Radio_ID, 174, 55, 39, 10, WS_TABSTOP
+    END
+END

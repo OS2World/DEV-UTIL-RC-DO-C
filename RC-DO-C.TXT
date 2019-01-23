@@ -1,0 +1,155 @@
+Release 0.4
+
+This file did not go through a spell checker. ( or a grammer checker for that matter.)
+
+RC-DO-C, is a VREXX command program that reads a .RC and .DLG file to create
+a .C file.
+
+It requires the VREXX package from IBM.  Remember VREXX, REXX, and IBM 
+are trademarks of the International Business Machine Corporation.  Get the 
+VREXX package from your favorite BBS. It's a nice little package. 
+
+The C code generated is accepted by the C Set/2 Compile.  Again C Set/2 is
+a trademark of the International Business Machine Corporation.
+
+To run RC-DO-C, simply type the command name.  An optional .rc filename
+may be passed as a parameter.
+
+Example:   RC-DO-C rccdo.rc.
+
+Even if you enter a file name; the program will still prompt you for a file to read.
+We'll fix it sometime later.
+
+You will be presented with a list of radio buttons and two push buttons to 
+do the code thing. (BTW, the CANCEL push button sometimes means
+CANCEL othertimes it means END. While the OKAY button will mean
+OKAY sometimes and others END.  It's confusing but You should get the
+hang of it.)
+
+The series of steps to follow are:
+   Select a file (Radio Button 1)
+   Parse the file (Radio Button 2 -We don't know why we didn't combine this with Select but we didn't).
+   Add Controls (Radio Button 3) - This is followed by a whole bunch of dialog windows.
+   Create A C file (Radio Button 6).
+
+There are two other steps: Save (Radio Button 4) and Load RCC file(Radio 
+ Button 5).   Use  these if you want to add more controls to a parsed file. 
+
+(BTW the parser is  very weak and needs lots of attention. So go gentle on it.)
+
+Please note: That if you edit the C file. 
+                        Then  you change your RC or DLG 
+                        and regenerate the C file 
+                         you re-parse, you will loose all your changes to the C file.
+                        MAKE A BACKUP OR GEN TO DIFFERENT FILE NAME.
+
+-How To Add Controls (Radio Button 3) -
+               Multi Step Process.
+   Gives a list of all known Windows and Dialogs from the RC and DLG files.
+      Select one and press OKAY.
+         Gives a list on all define PM PMs, with names for the selected Window Or
+          .         Dialog.  BTW, numbered IDs are ignored.
+          .  Select one and press OKAY.
+          .   .  Gives a list of 5 functions (help(Selection 5) is implemented)
+          .   .       Select one and press OKAY.
+          .   .           If you pick Start Win/DLG then
+          .   .                 you get a list of all other Windows and Dialogs to be started.
+          .   .                   Select one and press OKAY.
+          .   Select another ID when done press CANCEL.
+         Select anthoer Window or Dialog when done press CANCEL
+
+
+
+That's it in a nutshell.  Good Luck and read on.
+
+First, we apologize for not creating a INF file.  So little time so much code write.
+
+Second, we aplogize for no real documentation.  Next release we promise. 
+Yeah, right.
+
+Third, we tried to make the program use as intuitive as possible. Our intuition
+is your obfuscation.
+
+Fourth, If you want the next release, send $25.00 and floppy disk to:
+         American Coders, LTD
+         RC-DO-C Development Team
+         Post Office Box 97462
+         Raleigh, NC   27624
+
+Fifth, If you have a question call us  day or night at (919) 846-2014.
+
+Sixth, we included several files. Here is a list:
+      RC-DO-C.TXT, this file
+      RC-DO-C.LIC, some license we ripped off the VREXX package.
+      RC-DO-C.CMD, the program.
+      RCCDO.RC, sample resource script.
+      RCCDO.DLG, sample resource dialog.
+      RCCDO.RES, sample RES file.
+      RCCDO.H, output from DIALOG generator.
+      RCCDO.C,  C program generated from RC-DO-C.
+      RCCDO.ICO, sample ICON file.
+      RCCDO.EXE, sample executable.
+
+Release 0.2 notes:
+
+    Added code to track non-Automatic RadioButtons and CheckBoxes.
+
+    In the C code you'll find two arrays to track these two types:
+ 
+         1. CheckBoxes -  Each checkbox is represented as an element in the
+              cb array.  If the box is checked  then the element value is TRUE and if
+               box is unchecked then the element value is  FALSE.
+
+          2. RadioButtons -  Each dialog is represented as an element in the
+               rb array.  If one of the dialog buttons is checked then the value of
+               that radio button is the value of the dialogs position in the rb array.
+
+                If you need to have more than one group of radio buttons in a dialog,
+                then add a new element to enum list of dialog-radiobuttons and change
+                the CONTROL logic in the dialog procedure.
+
+       There is no logic for AutoRadioButtons or AutoCheckBoxes.
+
+
+Release 0.3 notes:
+
+    Added code to store and read Entry Fields and Multiple Line Entry Field.
+
+      In the C code you'll find one array for each Entry Field and
+      one  character pointer  for each MLE.  Also the MLE have a ULONG
+       field for tracking its size.  Entry fields size are pre-determined by the
+       ylen paramter in the DLG file.
+
+       Both types of fields are loaded into when the DIALOG is
+        initialized.  Well the MLE are only if the length is > 0.
+
+       In the CASE CONTROL structure each type of field
+       is tested for *_KILLFOCUS (which means the user is leaving that
+       field for another)  At that time the C code will save what the user
+       has put in there.  There is probably a better place to put this type of
+       code.  If you can think of a better place let us know.
+
+   Added logic for Quit W/ Message (Option 3) for Add Control function.
+
+       Look in the C code you'll find it.  The message and title we send out
+       is rather generic.  It uses the YES NO push buttons with NO as the
+       default.
+
+Release 0.4 notes:
+
+    Added code to allow just dialog boxes to be created.  It didn't dawn on us that you
+didn't need a primary window to start a dialog until we started to think about what VREXX
+is doing.  BTW - the program is stupid so it always picks the first window
+or dialog it finds as the one to start.
+
+     Used window/dialog name to create processing procedure/function name.
+
+     Did some general code cleanup.
+
+Plans for release 0.5 -  list boxes
+                            0.6 -  combo boxes
+                            0.7 -  spin boxes
+                            0.8 - tba.
+
+Copyright 1993  American Coders, LTD  Raleigh  NC  USA   All rights reserved.
+

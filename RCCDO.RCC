@@ -1,0 +1,29 @@
+E:\PMBUILD\*.rc,FILEC,1,1,0
+Rccdo,1,11
+File_AB,SUBMENU,,
+Open_CH,MENUITEM,,Open_CH
+Print_CH,MENUITEM,,
+ID_Separator2,MENUITEM,,
+Exit_CH,MENUITEM,,End Win/Dlg
+Help_AB,SUBMENU,,
+HelpForHelp,MENUITEM,,
+ExtendedHelp,MENUITEM,,
+KeysHelp,MENUITEM,,
+HelpIndex,MENUITEM,,
+,DLGINCLUDE,,
+Open_CH ,12,25
+check,CHECKBOX, 10,
+combolistbox,COMBOBOX, 35,
+entryfield,ENTRYFIELD, 8,
+horizontal,CONTROL, 7,
+listbox,LISTBOX,,
+mle,MLE, 40,
+push,PUSHBUTTON, 14,End Win/Dlg
+text,LTEXT, 8,
+vertical,CONTROL, 40,
+radio_2,RADIOBUTTON, 10,
+checker2,CHECKBOX, 10,
+Acheck,AUTOCHECKBOX, 10,
+AutoRadio,AUTORADIOBUTTON, 10,
+Radio_ID,RADIOBUTTON, 10,
+"rccdo.h"

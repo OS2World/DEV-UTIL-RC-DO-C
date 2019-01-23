@@ -1,0 +1,34 @@
+# IBM Developer's Workframe/2 Make File Creation run at 21:03:59 on 12/09/92
+
+# Make File Creation run in directory:
+#   E:\PMBUILD;
+
+.SUFFIXES:
+
+.SUFFIXES: .c .rc
+
+ALL: RCCDO.EXE \
+     RCCDO.RES
+
+rccdo.exe:  \
+  RCCDO.OBJ \
+  RCCDO.RES \
+  MAKEFILE
+   @REM @<<RCCDO.@0
+     /CO /LI /NOL /PM:PM +
+     RCCDO.OBJ
+     rccdo.exe
+     
+     
+     ;
+<<
+   LINK386.EXE @RCCDO.@0
+   RC RCCDO.RES rccdo.exe
+
+{.}.rc.res:
+   RC -r .\$*.RC
+
+{.}.c.obj:
+   ICC.EXE /Ss /Ti /C .\$*.c
+
+!include MAKEFILE.DEP
